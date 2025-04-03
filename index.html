@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCQ Test Portal - Select Level</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+
+    <header>
+        <h1>Forge Your Knowledge</h1>
+        <p>Select your challenge level</p>
+    </header>
+
+    <main id="forge-container">
+        <div class="anvil-wrapper">
+            <div class="anvil" id="anvil-see" data-level="see" data-target="selection_see.html" data-code-key="see_code">
+                <span class="anvil-icon">🔧</span> <!-- Simple placeholder icon -->
+                <span class="anvil-label">SEE NEB Prep</span>
+                <div class="sparks"></div> <!-- For CSS spark effects -->
+            </div>
+            <p class="level-description">Questions based on SEE/NEB Curriculum.</p>
+        </div>
+
+        <div class="anvil-wrapper">
+            <div class="anvil" id="anvil-basic" data-level="basic" data-target="selection_basic.html" data-code-key="basic_code">
+                 <span class="anvil-icon">🧪</span> <!-- Simple placeholder icon -->
+                <span class="anvil-label">Basic Entrance</span>
+                 <div class="sparks"></div>
+            </div>
+             <p class="level-description">Common entrance questions (Physics, Chemistry, Math, Bio, Eng).</p>
+        </div>
+
+        <div class="anvil-wrapper">
+             <div class="anvil" id="anvil-ktm" data-level="ktm" data-target="selection_ktm.html" data-code-key="ktm_code">
+                <span class="anvil-icon">⚙️</span> <!-- Simple placeholder icon -->
+                <span class="anvil-label">KTM Entrance Special</span>
+                 <div class="sparks"></div>
+            </div>
+             <p class="level-description">Entrance questions focused on Kathmandu University patterns.</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2023 MCQ Portal</p>
+    </footer>
+
+    <!-- Code Entry Modal -->
+    <div id="code-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="close-modal-btn">×</span>
+            <h2>Enter Access Code</h2>
+            <p>An access code is required for this level. Enter the code provided to you.</p>
+            <div class="form-group">
+                <label for="code-level-select">Code is for:</label>
+                <select id="code-level-select" disabled>
+                    <option value="see">SEE NEB Prep</option>
+                    <option value="basic">Basic Entrance</option>
+                    <option value="ktm">KTM Entrance</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="code-input">Access Code:</label>
+                <input type="text" id="code-input" placeholder="Enter your code">
+            </div>
+            <button id="submit-code-btn">Store Code & Proceed</button>
+            <p class="modal-note">Note: Code is stored locally in your browser for future visits. Your access will be verified securely on the test page.</p>
+        </div>
+    </div>
+
+    <!-- Notification Popup -->
+    <div id="notification-popup" class="notification">
+        <span id="notification-message">Message goes here</span>
+    </div>
+
+    <!-- Sound Effect -->
+    <!-- Make sure the path is correct and you provide the MP3 file -->
+    <audio id="anvil-sound" src="assets/sounds/anvil_hit.mp3" preload="auto"></audio>
+
+    <script src="js/index.js"></script>
+</body>
+</html>
