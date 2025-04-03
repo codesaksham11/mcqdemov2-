@@ -1,0 +1,147 @@
+/* css/index.css */
+
+body {
+    /* Darker background for the forge theme */
+    background-color: #2c3e50; /* Dark slate blue */
+    color: #ecf0f1; /* Light grey text */
+}
+
+header, footer {
+    background-color: #34495e; /* Slightly lighter slate blue */
+}
+
+#forge-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    justify-content: space-around;
+    align-items: flex-start; /* Align items at the start of the cross axis */
+    padding: 2rem 0;
+    gap: 2rem; /* Spacing between anvil wrappers */
+}
+
+.anvil-wrapper {
+    text-align: center;
+    flex-basis: 250px; /* Base width for each item */
+    flex-grow: 1; /* Allow items to grow */
+    max-width: 300px;
+}
+
+
+.anvil {
+    background: linear-gradient(145deg, #546e7a, #37474f); /* Dark grey gradient */
+    color: #eceff1;
+    padding: 2.5rem 1.5rem;
+    border-radius: 15px 15px 5px 5px; /* Anvil-like shape */
+    margin: 0 auto 0.5rem auto; /* Center anvil */
+    cursor: pointer;
+    position: relative;
+    overflow: hidden; /* Contain pseudo-elements */
+    border: 3px solid #263238; /* Dark border */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 80%;
+    min-height: 150px; /* Ensure consistent height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.anvil-icon {
+    font-size: 2rem;
+    margin-bottom: 0.8rem;
+    display: block; /* Ensure it takes block space */
+}
+
+.anvil-label {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.level-description {
+    font-size: 0.9rem;
+    color: #bdc3c7; /* Lighter grey */
+    padding: 0 1rem;
+}
+
+
+/* --- Hover and Active Effects --- */
+
+.anvil:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 10px 25px rgba(255, 107, 0, 0.3), /* Orange glow */
+                inset 0 2px 4px rgba(255, 255, 255, 0.2),
+                0 0 15px rgba(255, 165, 0, 0.5); /* Outer halo */
+    border-color: #ffab40; /* Orange border highlight */
+}
+
+/* Simple CSS Spark Effect on Hover */
+.anvil:hover .sparks::before,
+.anvil:hover .sparks::after {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: radial-gradient(circle, #ffd700, #ffa500); /* Gold/Orange sparks */
+    border-radius: 50%;
+    top: 20%;
+    left: 10%;
+    opacity: 0;
+    animation: spark-fly 0.6s ease-out forwards;
+}
+
+.anvil:hover .sparks::after {
+    top: 70%;
+    left: 85%;
+    width: 7px;
+    height: 7px;
+    animation-delay: 0.15s; /* Delay second spark */
+}
+
+
+@keyframes spark-fly {
+    0% {
+        opacity: 0.8;
+        transform: translate(0, 0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(20px, -30px) scale(0.5); /* Sparks fly up and out */
+    }
+}
+
+/* --- Active State (during click potentially) --- */
+.anvil:active {
+   transform: translateY(-2px) scale(1.01);
+   box-shadow: 0 5px 15px rgba(255, 0, 0, 0.4), /* Redder glow on click */
+                inset 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Responsive adjustments for index page */
+@media (max-width: 768px) {
+     #forge-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 2.5rem; /* Increase gap when stacked */
+     }
+     .anvil-wrapper {
+        flex-basis: auto; /* Reset basis */
+        width: 90%; /* Take more width */
+        max-width: 400px; /* Limit max width */
+     }
+    .anvil {
+        width: 70%; /* Adjust anvil width within wrapper */
+        padding: 2rem 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .anvil {
+        width: 85%;
+        min-height: 130px;
+    }
+     .anvil-label {
+        font-size: 1rem;
+    }
+}
