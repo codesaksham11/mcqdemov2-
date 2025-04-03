@@ -11,22 +11,25 @@
 
     <header>
         <h1>Forge Your Knowledge</h1>
-        <p>Select your challenge level</p>
+        <p>Select your challenge level or enter an access code</p>
+        <!-- Added Button to trigger code modal -->
+        <button id="enter-code-btn" class="header-button">Enter Access Code</button>
     </header>
 
     <main id="forge-container">
+        <!-- Anvil wrappers remain the same visually -->
         <div class="anvil-wrapper">
             <div class="anvil" id="anvil-see" data-level="see" data-target="selection_see.html" data-code-key="see_code">
-                <span class="anvil-icon">🔧</span> <!-- Simple placeholder icon -->
+                <span class="anvil-icon">🔧</span>
                 <span class="anvil-label">SEE NEB Prep</span>
-                <div class="sparks"></div> <!-- For CSS spark effects -->
+                <div class="sparks"></div>
             </div>
             <p class="level-description">Questions based on SEE/NEB Curriculum.</p>
         </div>
 
         <div class="anvil-wrapper">
             <div class="anvil" id="anvil-basic" data-level="basic" data-target="selection_basic.html" data-code-key="basic_code">
-                 <span class="anvil-icon">🧪</span> <!-- Simple placeholder icon -->
+                 <span class="anvil-icon">🧪</span>
                 <span class="anvil-label">Basic Entrance</span>
                  <div class="sparks"></div>
             </div>
@@ -35,7 +38,7 @@
 
         <div class="anvil-wrapper">
              <div class="anvil" id="anvil-ktm" data-level="ktm" data-target="selection_ktm.html" data-code-key="ktm_code">
-                <span class="anvil-icon">⚙️</span> <!-- Simple placeholder icon -->
+                <span class="anvil-icon">⚙️</span>
                 <span class="anvil-label">KTM Entrance Special</span>
                  <div class="sparks"></div>
             </div>
@@ -47,38 +50,42 @@
         <p>© 2023 MCQ Portal</p>
     </footer>
 
-    <!-- Code Entry Modal -->
+    <!-- Code Entry Modal (Modified) -->
     <div id="code-modal" class="modal">
         <div class="modal-content">
             <span class="close-button" id="close-modal-btn">×</span>
-            <h2>Enter Access Code</h2>
-            <p>An access code is required for this level. Enter the code provided to you.</p>
-            <div class="form-group">
+            <h2>Enter Purchased Access Code</h2>
+            <p>Select the level your code is for and enter it below.</p>
+             <div class="form-group">
                 <label for="code-level-select">Code is for:</label>
-                <select id="code-level-select" disabled>
-                    <option value="see">SEE NEB Prep</option>
-                    <option value="basic">Basic Entrance</option>
-                    <option value="ktm">KTM Entrance</option>
+                 <!-- Removed 'disabled' attribute -->
+                <select id="code-level-select">
+                    <option value="see">SEE NEB Prep (Cost: NPR 80)</option>
+                    <option value="basic">Basic Entrance (Cost: NPR 100)</option>
+                    <option value="ktm">KTM Entrance (Cost: NPR 150)</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="code-input">Access Code:</label>
-                <input type="text" id="code-input" placeholder="Enter your code">
+                <!-- Changed input type to password -->
+                <input type="password" id="code-input" placeholder="Enter your code">
+                 <span class="error-message" id="code-error"></span> <!-- Error message placeholder -->
             </div>
-            <button id="submit-code-btn">Store Code & Proceed</button>
-            <p class="modal-note">Note: Code is stored locally in your browser for future visits. Your access will be verified securely on the test page.</p>
+            <!-- Changed button text -->
+            <button id="submit-code-btn">Validate & Store Code</button>
+             <p class="modal-note">Note: This stores your code locally. Access to the quiz page is verified securely.</p>
         </div>
     </div>
 
-    <!-- Notification Popup -->
+    <!-- Notification Popup (Remains the same) -->
     <div id="notification-popup" class="notification">
         <span id="notification-message">Message goes here</span>
     </div>
 
-    <!-- Sound Effect -->
-    <!-- Make sure the path is correct and you provide the MP3 file -->
+    <!-- Sound Effect (Remains the same) -->
     <audio id="anvil-sound" src="assets/sounds/anvil_hit.mp3" preload="auto"></audio>
 
+    <script src="js/utils.js"></script> <!-- Load utils first -->
     <script src="js/index.js"></script>
 </body>
 </html>
