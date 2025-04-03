@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEE Level - Quiz Setup</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/selection.css"> <!-- Link selection specific CSS -->
+    <script>
+        // --- Early Access Check ---
+        // This runs before the main JS file to quickly redirect if no code found
+        // Relies on the Cloudflare middleware for TRUE security.
+        const requiredCode = localStorage.getItem('see_code');
+        if (!requiredCode) {
+             // If you want a message before redirect:
+             // alert("Access denied. Please enter a valid code on the main page.");
+            window.location.replace('index.html'); // Use replace to avoid back button issues
+        }
+    </script>
+</head>
+<body>
+
+    <header>
+        <h1>SEE NEB Preparation - Setup Your Quiz</h1>
+        <p>Configure your practice test</p>
+    </header>
+
+    <main class="selection-container">
+        <div class="price-info">
+            Access requires a valid code (Cost: NPR 80). Enter code on the main page if needed.
+        </div>
+
+        <form id="see-selection-form">
+            <div class="form-row">
+                <!-- Quantity Selection -->
+                <div class="form-group">
+                    <label for="quantity">Number of Questions (1-100):</label>
+                    <input type="number" id="quantity" name="quantity" min="1" max="100" required>
+                    <span class="error-message" id="quantity-error"></span>
+                </div>
+
+                <!-- Time Selection -->
+                <div class="form-group">
+                    <label for="time">Time Limit (1-180 minutes):</label>
+                    <input type="number" id="time" name="time" min="1" max="180" required>
+                     <!-- Optional: Use a range slider in addition or instead -->
+                     <!-- <input type="range" id="time-slider" name="time-slider" min="1" max="180" value="30">
+                     <span id="time-display">30 minutes</span> -->
+                    <span class="error-message" id="time-error"></span>
+                </div>
+            </div>
+
+            <!-- Subject Selection -->
+            <fieldset class="form-group subject-group">
+                <legend>Select Subjects (Choose at least one):</legend>
+                <div>
+                    <input type="checkbox" id="subject-math" name="subject" value="math">
+                    <label for="subject-math">Mathematics</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="subject-opt_math" name="subject" value="opt_math">
+                    <label for="subject-opt_math">Optional Mathematics</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="subject-science" name="subject" value="science">
+                    <label for="subject-science">Science</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="subject-social" name="subject" value="social">
+                    <label for="subject-social">Social Studies</label>
+                </div>
+                 <span class="error-message" id="subject-error"></span>
+            </fieldset>
+
+
+            <button type="submit" id="start-quiz-btn">Start Quiz</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>© 2023 MCQ Portal</p>
+    </footer>
+
+    <!-- Notification Popup Structure (from main.css) -->
+    <div id="notification-popup" class="notification">
+        <span id="notification-message"></span>
+    </div>
+
+    <!-- Load Utility Functions FIRST -->
+    <script src="js/utils.js"></script>
+    <!-- Load Page Specific JS -->
+    <script src="js/selection_see.js"></script>
+
+</body>
+</html>
