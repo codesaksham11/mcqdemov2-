@@ -3,85 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SEE Level - Quiz Setup</title>
+    <title>SEE MCQ Practice Setup</title>
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/selection.css"> <!-- Link selection specific CSS -->
-    <script>
-        // --- Early Access Check ---
-        // This runs before the main JS file to quickly redirect if no code found
-        // Relies on the Cloudflare middleware for TRUE security.
-        const requiredCode = localStorage.getItem('see_code');
-        if (!requiredCode) {
-             // If you want a message before redirect:
-             // alert("Access denied. Please enter a valid code on the main page.");
-            window.location.replace('index.html'); // Use replace to avoid back button issues
-        }
-    </script>
+    <!-- Use selection.css for styling -->
+    <link rel="stylesheet" href="css/selection.css">
+    <!-- NO Early Access Check Script Here -->
 </head>
 <body>
 
-    <header>
-        <h1>SEE NEB Preparation - Setup Your Quiz</h1>
-        <p>Configure your practice test</p>
+    <!-- Simple Header -->
+    <header class="setup-header">
+        <!-- Optionally add a simple back arrow or just text -->
     </header>
 
-    <main class="selection-container">
-        <div class="price-info">
-            Access requires a valid code (Cost: NPR 80). Enter code on the main page if needed.
-        </div>
+    <main class="setup-container">
+        <h1 class="setup-title">SEE MCQ Practice Setup</h1>
+        <h2 class="setup-subtitle">Configure Your Quiz</h2>
 
         <form id="see-selection-form">
-            <div class="form-row">
-                <!-- Quantity Selection -->
-                <div class="form-group">
-                    <label for="quantity">Number of Questions (1-100):</label>
-                    <input type="number" id="quantity" name="quantity" min="1" max="100" required>
-                    <span class="error-message" id="quantity-error"></span>
-                </div>
 
-                <!-- Time Selection -->
-                <div class="form-group">
-                    <label for="time">Time Limit (1-180 minutes):</label>
-                    <input type="number" id="time" name="time" min="1" max="180" required>
-                     <!-- Optional: Use a range slider in addition or instead -->
-                     <!-- <input type="range" id="time-slider" name="time-slider" min="1" max="180" value="30">
-                     <span id="time-display">30 minutes</span> -->
-                    <span class="error-message" id="time-error"></span>
-                </div>
+            <!-- Number of Questions -->
+            <div class="form-group">
+                <label for="quantity">Number of Questions:</label>
+                <input type="number" id="quantity" name="quantity" placeholder="Enter 10 to 100" min="10" max="100" required>
+                <!-- Updated range and message -->
+                <p class="helper-text">Value must be between 10 and 100.</p>
+                <span class="error-message" id="quantity-error"></span>
+            </div>
+
+            <!-- Time Limit -->
+            <div class="form-group">
+                <label for="time">Time Limit (minutes):</label>
+                <input type="number" id="time" name="time" placeholder="Enter 1 to 180" min="1" max="180" required>
+                <p class="helper-text">Set a timer from 1 minute up to 3 hours.</p>
+                <span class="error-message" id="time-error"></span>
             </div>
 
             <!-- Subject Selection -->
             <fieldset class="form-group subject-group">
-                <legend>Select Subjects (Choose at least one):</legend>
-                <div>
-                    <input type="checkbox" id="subject-math" name="subject" value="math">
-                    <label for="subject-math">Mathematics</label>
-                </div>
-                <div>
-                    <input type="checkbox" id="subject-opt_math" name="subject" value="opt_math">
-                    <label for="subject-opt_math">Optional Mathematics</label>
-                </div>
-                <div>
+                <legend>Select Subject(s):</legend>
+                <div class="checkbox-wrapper">
                     <input type="checkbox" id="subject-science" name="subject" value="science">
                     <label for="subject-science">Science</label>
                 </div>
-                <div>
+                 <div class="checkbox-wrapper">
                     <input type="checkbox" id="subject-social" name="subject" value="social">
                     <label for="subject-social">Social Studies</label>
                 </div>
+                <!-- Add Math and Opt Math back -->
+                <div class="checkbox-wrapper">
+                    <input type="checkbox" id="subject-math" name="subject" value="math">
+                    <label for="subject-math">Mathematics</label>
+                </div>
+                <div class="checkbox-wrapper">
+                    <input type="checkbox" id="subject-opt_math" name="subject" value="opt_math">
+                    <label for="subject-opt_math">Optional Mathematics</label>
+                </div>
+                <p class="helper-text subject-helper">Check at least one subject.</p>
                  <span class="error-message" id="subject-error"></span>
             </fieldset>
 
+            <!-- Premium Info Box -->
+             <div class="premium-info">
+                MCQ Access is a premium feature (Requires Code)
+                <br> - Cost: NPR 80
+                <br> Need the code? Please see <a href="#" id="payment-info-link">Payment Information</a>.
+                 <!-- NOTE: Replace # with actual payment link -->
+            </div>
 
-            <button type="submit" id="start-quiz-btn">Start Quiz</button>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button type="submit" id="start-quiz-btn" class="start-button">Start Quiz!</button>
+                <!-- Use type="button" for non-submitting buttons -->
+                <button type="button" onclick="window.location.href='index.html'" class="back-button">Back to Home</button>
+            </div>
         </form>
     </main>
 
-    <footer>
+     <footer class="setup-footer">
         <p>© 2023 MCQ Portal</p>
     </footer>
 
-    <!-- Notification Popup Structure (from main.css) -->
+    <!-- Notification Popup Structure (remains the same) -->
     <div id="notification-popup" class="notification">
         <span id="notification-message"></span>
     </div>
