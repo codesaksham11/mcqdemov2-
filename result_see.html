@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEE Quiz Results</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/result.css"> <!-- Link Result specific CSS -->
+</head>
+<body>
+    <header>
+        <h1>Quiz Results - SEE NEB Preparation</h1>
+    </header>
+
+    <main id="result-container">
+        <div id="loading-message-result">Loading results...</div>
+
+        <!-- Summary Section (populated by JS) -->
+        <section id="summary-section" class="result-section" style="display: none;">
+            <h2>Quiz Summary</h2>
+            <div id="score-feedback" class="feedback-message"></div>
+            <p><strong>Your Score:</strong> <span id="score-display"></span></p>
+            <p><strong>Time Taken:</strong> <span id="time-taken-display"></span></p>
+            <button id="show-details-btn">Show Full Details</button>
+        </section>
+
+        <!-- Detailed Results Section (populated by JS, initially hidden) -->
+        <section id="details-section" class="result-section" style="display: none;">
+            <h2>Detailed Answers</h2>
+            <div id="detailed-answers-container">
+                <!-- Detailed answers will be appended here -->
+                 <!-- Example Structure (repeated by JS)
+                 <div class="result-question-block correct">
+                     <p class="question-text">1. What is the powerhouse of the cell?</p>
+                     <div class="options-container">
+                         <div class="option-result "><span>a) Nucleus</span></div>
+                         <div class="option-result "><span>b) Ribosome</span></div>
+                         <div class="option-result correct-answer ticked"><span>c) Mitochondrion</span><span class="marker">✓</span></div>
+                         <div class="option-result"><span>d) Cell Wall</span></div>
+                     </div>
+                 </div>
+                 <div class="result-question-block incorrect">
+                      <p class="question-text">2. Which gas is most abundant?</p>
+                     <div class="options-container">
+                         <div class="option-result"><span>a) Oxygen</span></div>
+                         <div class="option-result correct-answer ticked"><span>b) Nitrogen</span><span class="marker">✓</span></div>
+                         <div class="option-result incorrect-selection"><span>c) Carbon Dioxide</span><span class="marker">✗</span></div>
+                         <div class="option-result "><span>d) Argon</span></div>
+                     </div>
+                 </div>
+                 <div class="result-question-block skipped">
+                      <p class="question-text">3. What is Pi?</p>
+                     <div class="options-container">
+                         <div class="option-result correct-answer ticked"><span>a) 3.14</span><span class="marker">✓</span></div>
+                         <div class="option-result "><span>b) 2.71</span></div>
+                         <div class="option-result "><span>c) 1.61</span></div>
+                         <div class="option-result "><span>d) 4.13</span></div>
+                     </div>
+                 </div>
+                  -->
+            </div>
+             <button id="hide-details-btn">Hide Details</button>
+        </section>
+
+        <div class="action-buttons">
+            <button onclick="window.location.href='selection_see.html'">Take Another SEE Quiz</button>
+            <button onclick="window.location.href='index.html'">Back to Level Selection</button>
+        </div>
+    </main>
+
+     <footer>
+        <p>© 2023 MCQ Portal</p>
+    </footer>
+
+    <!-- Notification Popup Structure -->
+    <div id="notification-popup" class="notification">
+        <span id="notification-message"></span>
+    </div>
+
+    <!-- Load Utility Functions -->
+    <script src="js/utils.js"></script>
+    <!-- Load Page Specific JS -->
+    <script src="js/result_see.js"></script>
+</body>
+</html>
