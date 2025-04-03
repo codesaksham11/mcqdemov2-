@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEE Quiz - In Progress</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/mcq.css"> <!-- Link MCQ specific CSS -->
+</head>
+<body>
+    <header class="mcq-header">
+        <h1>SEE NEB Preparation Quiz</h1>
+        <div class="quiz-info">
+            <span id="question-counter">Question 1 / X</span>
+            <span id="timer-display">Time Left: MM:SS</span>
+        </div>
+    </header>
+
+    <main id="quiz-container">
+        <!-- Questions will be loaded here dynamically by JS -->
+        <div id="loading-message">Loading questions...</div>
+        <!-- Example Structure (repeated by JS)
+        <div class="subject-section" data-subject="science">
+             <h2>Science</h2>
+             <div class="question-block" id="question-0">
+                 <p class="question-text">1. What is the powerhouse of the cell?</p>
+                 <div class="options-container">
+                     <label>
+                         <input type="radio" name="q0_options" value="a">
+                         <span>a) Nucleus</span>
+                     </label>
+                      <label>
+                         <input type="radio" name="q0_options" value="b">
+                         <span>b) Ribosome</span>
+                     </label>
+                      <label>
+                         <input type="radio" name="q0_options" value="c">
+                         <span>c) Mitochondrion</span>
+                     </label>
+                     <label>
+                         <input type="radio" name="q0_options" value="d">
+                         <span>d) Cell Wall</span>
+                     </label>
+                 </div>
+            </div>
+        </div>
+        -->
+    </main>
+
+    <footer class="mcq-footer">
+         <!-- Navigation Buttons (optional - could have next/prev if doing one question at a time) -->
+         <!-- <button id="prev-btn" disabled>Previous</button> -->
+         <!-- <button id="next-btn">Next</button> -->
+         <button id="submit-quiz-btn">Submit Answers</button>
+    </footer>
+
+    <!-- Notification Popup Structure -->
+    <div id="notification-popup" class="notification">
+        <span id="notification-message"></span>
+    </div>
+
+    <!-- Load Utility Functions -->
+    <script src="js/utils.js"></script>
+    <!-- Load Question Data (Make sure path is correct) -->
+    <script src="js/data/see_questions.js"></script>
+    <!-- Load Page Specific JS -->
+    <script src="js/mcq_see.js"></script>
+</body>
+</html>
