@@ -1,0 +1,163 @@
+/* css/mcq.css */
+
+body {
+    background-color: #eef2f7; /* Light cool background */
+}
+
+.mcq-header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    position: sticky; /* Keep header visible */
+    top: 0;
+    z-index: 50;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+.mcq-header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+.quiz-info {
+    display: flex;
+    justify-content: space-between;
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 0.95rem;
+}
+
+#quiz-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1rem;
+}
+
+#loading-message {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+    padding: 3rem;
+}
+
+.subject-section {
+    background-color: #fff;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+}
+.subject-section h2 {
+    font-family: var(--heading-font);
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    margin-top: 0;
+}
+
+.question-block {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #eee; /* Separator between questions */
+}
+.question-block:last-child {
+   border-bottom: none; /* No border for the last question in a section */
+   margin-bottom: 0.5rem; /* Reduce bottom margin for last question */
+   padding-bottom: 0.5rem;
+}
+
+.question-text {
+    font-weight: bold;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+.options-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive columns */
+    gap: 0.8rem;
+}
+
+.options-container label {
+    display: block; /* Each option on its own line or column space */
+    background-color: #f8f9fa;
+    padding: 0.8rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+    font-weight: normal; /* Reset label weight from main.css */
+    margin-bottom: 0; /* Reset label margin */
+}
+
+.options-container label:hover {
+    background-color: #e9ecef;
+    border-color: #bbb;
+}
+
+/* Style selected option */
+.options-container input[type="radio"]:checked + span {
+   font-weight: bold;
+}
+.options-container label input[type="radio"]:checked {
+   /* If needed, style the radio button itself when checked */
+   /* Could use accent-color in modern browsers */
+   accent-color: var(--primary-color);
+}
+
+.options-container label:has(input[type="radio"]:checked) { /* Style the label when its radio is checked */
+   background-color: #d6eaff; /* Light blue background */
+   border-color: var(--primary-color);
+}
+
+
+.options-container input[type="radio"] {
+    margin-right: 0.6rem;
+    width: auto; /* Let browser size radio */
+    transform: scale(1.1);
+}
+
+
+.mcq-footer {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    text-align: center;
+    border-top: 1px solid #dee2e6;
+    position: sticky;
+    bottom: 0;
+    z-index: 50;
+}
+
+#submit-quiz-btn {
+    background-color: var(--success-color);
+    padding: 0.8rem 2.5rem;
+    font-size: 1.1rem;
+}
+#submit-quiz-btn:hover {
+    background-color: darken(var(--success-color), 10%);
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    #quiz-container {
+        margin: 1rem auto;
+    }
+    .mcq-header h1 {
+       font-size: 1.3rem;
+    }
+    .quiz-info {
+        font-size: 0.9rem;
+        flex-direction: column; /* Stack info vertically */
+        align-items: center;
+        gap: 0.3rem;
+    }
+     .options-container {
+        grid-template-columns: 1fr; /* Single column on small screens */
+    }
+    .subject-section {
+        padding: 1rem;
+    }
+}
