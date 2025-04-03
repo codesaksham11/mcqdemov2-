@@ -1,106 +1,264 @@
 /* css/selection.css */
+/* General Styles for Setup Pages */
 
-.selection-container {
-    background-color: #ffffff; /* White background for form area */
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    max-width: 700px; /* Limit form width */
-    margin: 2rem auto; /* Center it */
+:root {
+    --setup-bg: #f0f4f8; /* Light blue-grey background */
+    --card-bg: #ffffff;
+    --primary-text: #2c3e50; /* Dark blue-grey text */
+    --secondary-text: #566573;
+    --accent-color: #1abc9c; /* Teal accent */
+    --input-border: #d6dbdf;
+    --input-focus-border: var(--accent-color);
+    --start-button-bg: #e74c3c; /* Reddish-orange */
+    --start-button-hover-bg: #c0392b; /* Darker red */
+    --back-button-bg: #7f8c8d; /* Grey */
+    --back-button-hover-bg: #616a6b; /* Darker grey */
+    --premium-box-bg: #fef9e7; /* Light yellow */
+    --premium-box-border: #f8e5a0;
 }
 
-.price-info {
+body {
+    background-color: var(--setup-bg);
+    color: var(--primary-text);
+    font-family: 'Arial', sans-serif; /* Cleaner font */
+}
+
+/* Remove default header/footer styles if needed, or keep minimal */
+.setup-header, .setup-footer {
+    background: none;
     text-align: center;
-    padding: 0.8rem;
-    background-color: var(--warning-color); /* Yellowish background */
-    color: #333;
-    border-radius: 5px;
-    margin-bottom: 1.5rem;
-    font-size: 0.9rem;
-    border: 1px solid darken(var(--warning-color), 10%);
+    padding: 0.5rem;
+    color: var(--secondary-text);
+}
+.setup-footer {
+   margin-top: 2rem;
+}
+
+.setup-container {
+    max-width: 550px; /* Constrained width for card effect */
+    margin: 2rem auto;
+    background-color: var(--card-bg);
+    padding: 2rem 2.5rem; /* More padding */
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.setup-title {
+    text-align: center;
+    color: var(--accent-color);
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.setup-subtitle {
+    text-align: center;
+    color: var(--primary-text);
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+    font-weight: 500;
 }
 
 #see-selection-form {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem; /* Spacing between form groups */
-}
-
-.form-row {
-    display: flex;
     gap: 1.5rem;
-    flex-wrap: wrap; /* Wrap on smaller screens */
-}
-
-.form-row .form-group {
-    flex: 1; /* Each group takes equal space */
-    min-width: 200px; /* Minimum width before wrapping */
 }
 
 .form-group {
-   margin-bottom: 0; /* Remove default margin as gap is used */
+    margin-bottom: 0.5rem; /* Space below each group */
 }
 
-
+.form-group label,
 .subject-group legend {
-    font-weight: bold;
-    margin-bottom: 0.8rem;
-    font-size: 1.1rem;
-    padding-bottom: 0.3rem;
-    border-bottom: 1px solid #eee; /* Subtle separator */
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600; /* Slightly bolder labels */
+    color: var(--primary-text);
+    font-size: 1rem;
 }
 
-.subject-group div {
-    display: inline-block; /* Place checkboxes side-by-side */
-    margin-right: 1.5rem;
-    margin-bottom: 0.5rem; /* Spacing below checkboxes */
+.form-group input[type="number"] {
+    width: 100%;
+    padding: 0.8rem 1rem; /* Larger padding */
+    border: 1px solid var(--input-border);
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
 }
 
-.subject-group label {
-    display: inline-block; /* Align label next to checkbox */
-    margin-left: 0.3rem;
-    font-weight: normal; /* Normal weight for checkbox labels */
-    cursor: pointer;
+.form-group input[type="number"]:focus {
+    outline: none;
+    border-color: var(--input-focus-border);
+    box-shadow: 0 0 0 2px rgba(26, 188, 156, 0.2); /* Subtle focus shadow */
 }
 
-.subject-group input[type="checkbox"] {
-   width: auto; /* Override main.css width */
-   cursor: pointer;
-   transform: scale(1.1); /* Slightly larger checkboxes */
-   margin-right: 0.1rem; /* Align label better */
+/* Placeholder Style */
+.form-group input[type="number"]::placeholder {
+    color: #aab7b8;
+    font-style: italic;
 }
 
+.helper-text {
+    font-size: 0.85rem;
+    color: var(--secondary-text);
+    margin-top: 0.4rem;
+    padding-left: 0.2rem;
+}
+.subject-helper {
+    margin-top: 0.8rem; /* More space before subject helper text */
+}
 
-/* Error message styling */
 .error-message {
     color: var(--error-color);
     font-size: 0.85rem;
-    display: block; /* Show on its own line */
-    min-height: 1.2em; /* Prevent layout shift when message appears/disappears */
+    display: block;
+    min-height: 1.2em;
     margin-top: 0.3rem;
+    font-weight: 500;
+}
+/* Highlight input border on error */
+input.error-input {
+    border-color: var(--error-color);
+}
+fieldset.error-input {
+     border: 1px solid var(--error-color); /* Add border to fieldset on error */
+     padding: 0.8rem; /* Adjust padding slightly */
+     border-radius: 6px;
+     margin: -1px; /* Offset border */
 }
 
-#start-quiz-btn {
-    align-self: center; /* Center button */
-    padding: 0.8rem 2.5rem;
+
+/* Subject Selection - Updated Styling */
+.subject-group {
+    border: 1px solid var(--input-border);
+    padding: 1rem 1.5rem;
+    border-radius: 6px;
+    margin-top: 0.5rem; /* Space above fieldset */
+}
+.subject-group legend {
+    padding: 0 0.5rem; /* Padding around legend text */
+    margin-left: -0.5rem; /* Align legend better */
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--primary-text);
+}
+.checkbox-wrapper {
+    display: inline-flex; /* Use flex for better alignment */
+    align-items: center;
+    margin-right: 1.5rem;
+    margin-bottom: 0.8rem; /* Spacing below checkbox rows */
+    border: 1px solid #e0e0e0; /* Border around each option */
+    padding: 0.5rem 1rem;
+    border-radius: 20px; /* Pill shape */
+    background-color: #fdfefe;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+.checkbox-wrapper:hover {
+   border-color: #bdc3c7;
+}
+
+.checkbox-wrapper input[type="checkbox"] {
+    margin-right: 0.5rem; /* Space between box and label */
+    width: 1em; /* Consistent size */
+    height: 1em;
+    cursor: pointer;
+    accent-color: var(--accent-color); /* Color the checkmark */
+}
+.checkbox-wrapper label {
+    margin-bottom: 0; /* Reset margin */
+    font-weight: normal;
+    cursor: pointer;
+    color: var(--secondary-text);
+    font-size: 0.95rem;
+}
+
+.checkbox-wrapper input[type="checkbox"]:checked + label {
+    color: var(--primary-text); /* Darker text when checked */
+     font-weight: 500;
+}
+.checkbox-wrapper:has(input[type="checkbox"]:checked) { /* Style wrapper when checked */
+    border-color: var(--accent-color);
+    background-color: rgba(26, 188, 156, 0.05); /* Very light accent bg */
+}
+
+
+/* Premium Info Box */
+.premium-info {
+    background-color: var(--premium-box-bg);
+    border: 1px solid var(--premium-box-border);
+    padding: 1rem 1.5rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    color: #856404; /* Dark yellow text */
+    text-align: center;
+    line-height: 1.5;
+    margin-top: 1rem;
+}
+.premium-info a {
+    color: #007bff; /* Standard link color */
+    font-weight: bold;
+    text-decoration: underline;
+}
+.premium-info a:hover {
+    color: #0056b3;
+}
+
+/* Action Buttons Container */
+.action-buttons {
+    display: flex;
+    flex-direction: column; /* Stack buttons */
+    gap: 0.8rem; /* Space between buttons */
+    margin-top: 1.5rem;
+}
+
+.action-buttons button {
+    padding: 0.9rem 1.5rem;
+    border: none;
+    border-radius: 6px;
     font-size: 1.1rem;
-    margin-top: 1rem; /* Space above button */
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    width: 100%; /* Make buttons full width */
+}
+.action-buttons button:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
-/* Responsive Adjustments */
+.start-button {
+    background-color: var(--start-button-bg);
+    color: white;
+}
+.start-button:hover {
+    background-color: var(--start-button-hover-bg);
+}
+
+.back-button {
+    background-color: var(--back-button-bg);
+    color: white;
+}
+.back-button:hover {
+    background-color: var(--back-button-hover-bg);
+}
+
+
+/* Responsive */
 @media (max-width: 600px) {
-    .selection-container {
+    .setup-container {
+        margin: 1rem;
         padding: 1.5rem;
     }
-    .form-row {
-        flex-direction: column; /* Stack time/quantity on small screens */
-        gap: 1rem;
+    .setup-title {
+        font-size: 1.6rem;
     }
-     .subject-group div {
-        display: block; /* Stack checkboxes vertically */
-        margin-right: 0;
-     }
-      #start-quiz-btn {
-        width: 100%; /* Full width button on small screens */
+     .setup-subtitle {
+        font-size: 1.1rem;
+    }
+    .checkbox-wrapper {
+        display: flex; /* Ensure full width */
+        margin-right: 0; /* Remove right margin when stacked */
+    }
+    .action-buttons {
+        margin-top: 1rem;
     }
 }
