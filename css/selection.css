@@ -1,0 +1,106 @@
+/* css/selection.css */
+
+.selection-container {
+    background-color: #ffffff; /* White background for form area */
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    max-width: 700px; /* Limit form width */
+    margin: 2rem auto; /* Center it */
+}
+
+.price-info {
+    text-align: center;
+    padding: 0.8rem;
+    background-color: var(--warning-color); /* Yellowish background */
+    color: #333;
+    border-radius: 5px;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    border: 1px solid darken(var(--warning-color), 10%);
+}
+
+#see-selection-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Spacing between form groups */
+}
+
+.form-row {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap; /* Wrap on smaller screens */
+}
+
+.form-row .form-group {
+    flex: 1; /* Each group takes equal space */
+    min-width: 200px; /* Minimum width before wrapping */
+}
+
+.form-group {
+   margin-bottom: 0; /* Remove default margin as gap is used */
+}
+
+
+.subject-group legend {
+    font-weight: bold;
+    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid #eee; /* Subtle separator */
+}
+
+.subject-group div {
+    display: inline-block; /* Place checkboxes side-by-side */
+    margin-right: 1.5rem;
+    margin-bottom: 0.5rem; /* Spacing below checkboxes */
+}
+
+.subject-group label {
+    display: inline-block; /* Align label next to checkbox */
+    margin-left: 0.3rem;
+    font-weight: normal; /* Normal weight for checkbox labels */
+    cursor: pointer;
+}
+
+.subject-group input[type="checkbox"] {
+   width: auto; /* Override main.css width */
+   cursor: pointer;
+   transform: scale(1.1); /* Slightly larger checkboxes */
+   margin-right: 0.1rem; /* Align label better */
+}
+
+
+/* Error message styling */
+.error-message {
+    color: var(--error-color);
+    font-size: 0.85rem;
+    display: block; /* Show on its own line */
+    min-height: 1.2em; /* Prevent layout shift when message appears/disappears */
+    margin-top: 0.3rem;
+}
+
+#start-quiz-btn {
+    align-self: center; /* Center button */
+    padding: 0.8rem 2.5rem;
+    font-size: 1.1rem;
+    margin-top: 1rem; /* Space above button */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+    .selection-container {
+        padding: 1.5rem;
+    }
+    .form-row {
+        flex-direction: column; /* Stack time/quantity on small screens */
+        gap: 1rem;
+    }
+     .subject-group div {
+        display: block; /* Stack checkboxes vertically */
+        margin-right: 0;
+     }
+      #start-quiz-btn {
+        width: 100%; /* Full width button on small screens */
+    }
+}
