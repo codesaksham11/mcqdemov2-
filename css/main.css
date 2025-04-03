@@ -1,0 +1,205 @@
+/* css/main.css */
+:root {
+    --primary-color: #007bff; /* Example primary color */
+    --secondary-color: #6c757d; /* Example secondary color */
+    --background-color: #f8f9fa;
+    --text-color: #333;
+    --heading-font: 'Arial', sans-serif;
+    --body-font: 'Verdana', sans-serif;
+    --error-color: #dc3545;
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--body-font);
+    line-height: 1.6;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 1rem;
+}
+
+header, footer {
+    text-align: center;
+    padding: 1rem 0;
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+header h1 {
+     font-family: var(--heading-font);
+}
+
+main {
+    flex-grow: 1; /* Allows main content to take up available space */
+    max-width: 1000px;
+    margin: 2rem auto; /* Center content */
+    width: 95%;
+}
+
+button {
+    padding: 0.7em 1.5em;
+    border: none;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: darken(var(--primary-color), 10%);
+}
+
+input[type="text"],
+input[type="number"],
+select {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    width: 100%; /* Make inputs take full width of container */
+    margin-top: 0.3rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.2rem;
+    font-weight: bold;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+
+/* Basic Responsive */
+@media (max-width: 768px) {
+    body {
+        padding: 0.5rem;
+    }
+    main {
+        margin: 1rem auto;
+        width: 100%;
+    }
+     header h1 {
+        font-size: 1.8rem;
+    }
+}
+
+/* Accessibility */
+*:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Add utility class for hiding elements accessibly */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Simple Notification Style */
+.notification {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-150%); /* Start hidden above */
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    min-width: 250px;
+    text-align: center;
+}
+
+.notification.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+.notification.error { background-color: var(--error-color); }
+.notification.success { background-color: var(--success-color); }
+
+
+/* Basic Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 100; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto; /* 10% from the top and centered */
+    padding: 30px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    max-width: 500px; /* Maximum width */
+    border-radius: 8px;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.close-button {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-family: var(--heading-font);
+}
+.modal-note {
+    font-size: 0.85rem;
+    color: var(--secondary-color);
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    .modal-content {
+        width: 95%;
+        margin: 15% auto;
+        padding: 20px;
+    }
+}
