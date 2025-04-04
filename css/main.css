@@ -3,7 +3,7 @@
     --primary-color: #007bff; /* Example primary color */
     --secondary-color: #6c757d; /* Example secondary color */
     --background-color: #f8f9fa;
-    --text-color: #333;
+    --text-color: #333; /* Define default text color */
     --heading-font: 'Arial', sans-serif;
     --body-font: 'Verdana', sans-serif;
     --error-color: #dc3545;
@@ -21,7 +21,7 @@ body {
     font-family: var(--body-font);
     line-height: 1.6;
     background-color: var(--background-color);
-    color: var(--text-color);
+    color: var(--text-color); /* Use default text color */
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -32,7 +32,7 @@ header, footer {
     text-align: center;
     padding: 1rem 0;
     background-color: var(--secondary-color);
-    color: white;
+    color: white; /* Keep header/footer text white */
 }
 
 header h1 {
@@ -63,6 +63,7 @@ button:hover {
 
 input[type="text"],
 input[type="number"],
+input[type="password"], /* Added password type */
 select {
     padding: 0.5rem;
     border: 1px solid #ccc;
@@ -70,12 +71,14 @@ select {
     font-size: 1rem;
     width: 100%; /* Make inputs take full width of container */
     margin-top: 0.3rem;
+    color: var(--text-color); /* Ensure input text is dark */
 }
 
 label {
     display: block;
     margin-bottom: 0.2rem;
     font-weight: bold;
+    color: inherit; /* Inherit color from parent */
 }
 
 .form-group {
@@ -165,10 +168,26 @@ label {
     border-radius: 8px;
     position: relative;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    /* ** FIX: Ensure text inside modal is dark ** */
+    color: var(--text-color, #333);
+}
+
+/* ** FIX: Ensure specific elements inherit the dark color ** */
+.modal-content h2,
+.modal-content p,
+.modal-content label,
+.modal-content select, /* Added select */
+.modal-content option /* Added option */
+{
+   color: inherit; /* Ensure they inherit the dark color set on modal-content */
+}
+/* Ensure select dropdown options are readable too (browser/OS dependent styling) */
+.modal-content select {
+    background-color: white; /* Explicit background for select */
 }
 
 .close-button {
-    color: #aaa;
+    color: #aaa; /* Keep close button grey */
     position: absolute;
     top: 10px;
     right: 20px;
@@ -178,7 +197,7 @@ label {
 
 .close-button:hover,
 .close-button:focus {
-    color: black;
+    color: black; /* Darken on hover */
     text-decoration: none;
     cursor: pointer;
 }
@@ -191,7 +210,7 @@ label {
 }
 .modal-note {
     font-size: 0.85rem;
-    color: var(--secondary-color);
+    color: var(--secondary-color); /* Keep note text greyish */
     margin-top: 1.5rem;
     text-align: center;
 }
